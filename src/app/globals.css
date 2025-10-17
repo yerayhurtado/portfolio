@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+:root {
+  --font-sans: 'Geist Sans', sans-serif;
+  --font-mono: 'Geist Mono', monospace;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+  border-left: 1px solid #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #06b6d4, #3b82f6);
+  border-radius: 10px;
+  border: 2px solid #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #22d3ee, #60a5fa);
+}
+/* En tu globals.css o archivo CSS principal */
+html, body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  overflow-y: auto;
+    font-family: var(--font-sans);
+
+}
+
+
+code, pre {
+  font-family: var(--font-mono);
+}
+@keyframes spin-slow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+.animate-pulse {
+  animation: pulse 4s ease-in-out infinite;
+}
+
+.animate-delay-1000 { animation-delay: 1s; }
+.animate-delay-2000 { animation-delay: 2s; }
+.animate-delay-3000 { animation-delay: 3s; }
+.animate-delay-4000 { animation-delay: 4s; }
+.animate-delay-5000 { animation-delay: 5s; }
+
+.perspective {
+  perspective: 1000px;
+}
+
+/* --- máscara radial para limitar el glow --- */
+.mask-radial {
+  mask-image: radial-gradient(circle at center, white 60%, transparent 100%);
+  -webkit-mask-image: radial-gradient(circle at center, white 60%, transparent 100%);
+}
