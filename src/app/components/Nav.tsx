@@ -3,16 +3,17 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 
-// Nav component with two variants: 'desktop' and 'mobile'
-export default function Nav({ variant = 'desktop' }: { variant?: 'desktop' | 'mobile' }) {
+type NavVariant = 'desktop' | 'mobile'
+
+export default function Nav({ variant = 'desktop' }: { variant?: NavVariant }) {
   const navItems = ['Home', 'About', 'Projects', 'Skills', 'Contact']
 
-  const [active, setActive] = useState('Home') // Currently active section
-  const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0 }) // Desktop indicator
-  const [manualScroll, setManualScroll] = useState(false) // Avoid conflicts between scroll and click
-  const itemRefs = useRef<Array<HTMLLIElement | null>>([]) // Refs to nav items
+  const [active, setActive] = useState('Home') // Sección activa
+  const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0 }) // Indicador desktop
+  const [manualScroll, setManualScroll] = useState(false) // Evita conflicto entre scroll y click
+  const itemRefs = useRef<Array<HTMLLIElement | null>>([]) // Refs de los items
 
-  // 🧭 Observe sections to auto-update active nav item
+  // 🧭 Detectar sección visible y actualizar active
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -24,7 +25,7 @@ export default function Nav({ variant = 'desktop' }: { variant?: 'desktop' | 'mo
           }
         })
       },
-      { root: null, threshold: 0.6 } // Trigger when 60% of section is visible
+      { root: null, threshold: 0.6 } // Cuando 60% de la sección es visible
     )
 
     navItems.forEach((item) => {
@@ -33,16 +34,16 @@ export default function Nav({ variant = 'desktop' }: { variant?: 'desktop' | 'mo
     })
 
     return () => observer.disconnect()
-  }, [manualScroll, navItems]) // Agregamos navItems para evitar warning de ESLint
+  }, [manualScroll, navItems])
 
-  // ⏳ Reset manual scroll after 1 second
+  // ⏳ Reset manual scroll después de 1s
   useEffect(() => {
     if (!manualScroll) return
     const timer = setTimeout(() => setManualScroll(false), 1000)
     return () => clearTimeout(timer)
   }, [manualScroll])
 
-  // 🎯 Update desktop indicator position and width
+  // 🎯 Actualizar posición del indicador desktop
   useEffect(() => {
     const activeIndex = navItems.indexOf(active)
     const activeElement = itemRefs.current[activeIndex]
@@ -51,7 +52,7 @@ export default function Nav({ variant = 'desktop' }: { variant?: 'desktop' | 'mo
     }
   }, [active, navItems])
 
-  // 📱 Mobile version
+  // 📱 Mobile
   if (variant === 'mobile') {
     return (
       <nav className="w-full">
@@ -77,11 +78,11 @@ export default function Nav({ variant = 'desktop' }: { variant?: 'desktop' | 'mo
     )
   }
 
-  // 💻 Desktop version
+  // 💻 Desktop
   return (
     <nav className="relative bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl px-4 py-2">
       <ul className="flex space-x-4 relative">
-        {/* Animated indicator */}
+        {/* Indicador animado */}
         <motion.div
           className="absolute rounded-3xl bg-cyan-400"
           animate={{ left: indicatorStyle.left, width: indicatorStyle.width }}
@@ -92,7 +93,7 @@ export default function Nav({ variant = 'desktop' }: { variant?: 'desktop' | 'mo
           <li
             key={item}
             ref={(el) => {
-              itemRefs.current[index] = el ?? null
+              itemRefs.current[index] = el ?? null // ✅ Corregido: no retornamos nada
             }}
             className={`relative z-10 px-4 py-2 rounded-3xl cursor-pointer transition-colors duration-300 ${
               active === item ? 'text-black font-medium' : 'text-white hover:text-cyan-400'
