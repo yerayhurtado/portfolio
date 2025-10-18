@@ -69,7 +69,7 @@ export default function Hero() {
           transition={{ delay: 0.1, duration: 0.8 }}
           className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black mb-6 leading-tight tracking-tight"
         >
-          Hey, I'm{' '}
+          Hey, I&apos;m{' '}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 animate-pulse">
             Yeray
           </span>
@@ -97,7 +97,7 @@ export default function Hero() {
           transition={{ delay: 0.3, duration: 0.8 }}
           className="text-lg sm:text-xl md:text-2xl max-w-2xl mb-10 text-gray-300 leading-relaxed font-light"
         >
-          Building smart web solutions with modern tech, AI, and Big Data. Let's create something amazing together.
+          Building smart web solutions with modern tech, AI, and Big Data. Let&apos;s create something amazing together.
         </motion.p>
 
         {/* Social icons */}

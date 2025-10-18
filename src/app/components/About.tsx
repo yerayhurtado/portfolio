@@ -65,10 +65,10 @@ export default function AboutMe() {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed font-light">
-            Hi, I'm <span className="text-cyan-400 font-semibold">Yeray Hurtado</span>, a 20-year-old Web Developer and aspiring AI & Big Data Scientist from <span className="text-blue-400 font-semibold">Barcelona</span>.
+            Hi, I&apos;m <span className="text-cyan-400 font-semibold">Yeray Hurtado</span>, a 20-year-old Web Developer and aspiring AI & Big Data Scientist from <span className="text-blue-400 font-semibold">Barcelona</span>.
           </p>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed font-light">
-            I recently completed my studies in web app development and am now pursuing a <span className="text-cyan-400 font-semibold">Master's in AI & Big Data</span>. I love building modern, scalable web apps and designing smart AI solutions.
+            I recently completed my studies in web app development and am now pursuing a <span className="text-cyan-400 font-semibold">Master&apos;s in AI & Big Data</span>. I love building modern, scalable web apps and designing smart AI solutions.
           </p>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed font-light">
             Learning new tech, exploring tools, and turning ideas into real applications excites me. My goal is to merge web development and AI to create impactful digital solutions.
@@ -88,7 +88,7 @@ export default function AboutMe() {
             whileTap={{ scale: 0.95 }}
             className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-lg hover:shadow-[0_0_30px_rgba(6,182,212,0.4)] transition-all duration-300 cursor-pointer group"
           >
-            Let's Work Together
+            Let&apos; Work Together
             <motion.span
               animate={{ x: [0, 5, 0] }}
               transition={{ duration: 1.5, repeat: Infinity }}

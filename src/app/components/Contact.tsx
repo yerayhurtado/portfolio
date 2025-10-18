@@ -44,7 +44,7 @@ export default function Contact() {
       >
         <p className="text-cyan-400 text-sm font-bold tracking-widest uppercase mb-4">Get In Touch</p>
         <h2 className="text-5xl sm:text-6xl md:text-7xl font-extrabold text-white mb-4 leading-tight">
-          Let's <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Connect</span>
+          Let&apos;s <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Connect</span>
         </h2>
         <motion.div
           className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full mx-auto mt-4"
@@ -53,7 +53,7 @@ export default function Contact() {
           transition={{ duration: 0.8, delay: 0.2 }}
         />
         <p className="text-gray-400 text-lg mt-6 max-w-2xl mx-auto">
-          Have a project in mind? Let's discuss how we can work together to create something amazing.
+          Have a project in mind? Let&apos;s discuss how we can work together to create something amazing.
         </p>
       </motion.div>
 
