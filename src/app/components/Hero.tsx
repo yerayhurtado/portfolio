@@ -86,7 +86,10 @@ export default function Hero() {
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
               {text}
             </span>
-            <Cursor cursorStyle="|" className="text-cyan-400 text-3xl md:text-4xl" />
+            <span className="text-cyan-400 text-3xl md:text-4xl">
+  <Cursor cursorStyle="|" />
+</span>
+
           </h2>
         </motion.div>
 
