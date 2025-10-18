@@ -10,7 +10,7 @@ export default function Nav({ variant = 'desktop' }: { variant?: 'desktop' | 'mo
   const [active, setActive] = useState('Home') // Currently active section
   const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0 }) // Desktop indicator
   const [manualScroll, setManualScroll] = useState(false) // Avoid conflicts between scroll and click
-  const itemRefs = useRef<(HTMLLIElement | null)[]>([]) // Refs to nav items
+  const itemRefs = useRef<Array<HTMLLIElement | null>>([]) // Refs to nav items
 
   // 🧭 Observe sections to auto-update active nav item
   useEffect(() => {
@@ -33,7 +33,7 @@ export default function Nav({ variant = 'desktop' }: { variant?: 'desktop' | 'mo
     })
 
     return () => observer.disconnect()
-  }, [manualScroll])
+  }, [manualScroll, navItems]) // Agregamos navItems para evitar warning de ESLint
 
   // ⏳ Reset manual scroll after 1 second
   useEffect(() => {
@@ -49,7 +49,7 @@ export default function Nav({ variant = 'desktop' }: { variant?: 'desktop' | 'mo
     if (activeElement) {
       setIndicatorStyle({ left: activeElement.offsetLeft, width: activeElement.offsetWidth })
     }
-  }, [active])
+  }, [active, navItems])
 
   // 📱 Mobile version
   if (variant === 'mobile') {
@@ -91,7 +91,9 @@ export default function Nav({ variant = 'desktop' }: { variant?: 'desktop' | 'mo
         {navItems.map((item, index) => (
           <li
             key={item}
-            ref={(el) => (itemRefs.current[index] = el)}
+            ref={(el) => {
+              itemRefs.current[index] = el ?? null
+            }}
             className={`relative z-10 px-4 py-2 rounded-3xl cursor-pointer transition-colors duration-300 ${
               active === item ? 'text-black font-medium' : 'text-white hover:text-cyan-400'
             }`}
