@@ -42,7 +42,7 @@ export default function Header() {
         {/* Botón CV escritorio */}
         <div className="hidden lg:block">
           <motion.a
-            href="/CV_Yeray_Hurtado.pdf"
+            href="/CV_YerayHurtado.pdf"
             download
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -114,7 +114,7 @@ export default function Header() {
 
           {/* Botón CV móvil */}
           <motion.a
-            href="/CV_Yeray_Hurtado.pdf"
+            href="/CV_YerayHurtado.pdf"
             download
             whileHover={{ scale: 1.05, x: 8 }}
             whileTap={{ scale: 0.95 }}

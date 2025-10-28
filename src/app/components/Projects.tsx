@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { JSX, useState } from 'react';
-import { FaLaravel, FaGithub, FaReact } from 'react-icons/fa';
+import { FaLaravel, FaGithub, FaReact, FaExternalLinkAlt } from 'react-icons/fa';
 import { SiNextdotjs, SiMongodb, SiTailwindcss } from 'react-icons/si';
 
 interface Project {
@@ -11,6 +11,7 @@ interface Project {
   description: string;
   images?: string[];
   github?: string;
+  website?: string;
   technologies?: string[];
   category: string;
   year: string;
@@ -35,10 +36,12 @@ const projects: Project[] = [
     year: '2024',
   },
   {
-    title: 'Coming Soon',
+    title: 'El Racó de Huelva',
     description:
       'Elegant restaurant landing page showcasing the menu, location, and contact information with a modern design.',
-    comingSoon: true,
+    images: ['/RDHHero.png', '/RDHGallery.png', '/RDHOpiniones.png', '/RDHCarta.png'],  
+    website: 'https://raco-de-huelva.vercel.app/',
+    technologies: ['Next.js', 'React', 'Tailwind CSS'],
     category: 'Landing Page',
     year: '2025',
   },
@@ -93,14 +96,14 @@ function ProjectCard({ project, index }: ProjectCardProps) {
 
   return (
     <motion.div
-      className="group relative rounded-2xl overflow-hidden h-96 md:h-[28rem]"
+      className="group relative rounded-2xl overflow-hidden h-auto md:h-auto flex flex-col"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.7, delay: index * 0.2 }}
       whileHover={{ y: -8 }}
     >
-      <div className="relative w-full h-2/3 overflow-hidden bg-black rounded-2xl">
+      <div className="relative w-full h-64 md:h-80 overflow-hidden bg-black rounded-t-2xl">
         {project.images && project.images.length > 0 && (
           <motion.div
             key={currentImage}
@@ -147,7 +150,7 @@ function ProjectCard({ project, index }: ProjectCardProps) {
       </div>
 
       {/* Project content */}
-      <div className="relative h-1/3 bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm border border-gray-700/50 p-4 md:p-6 flex flex-col justify-between">
+      <div className="relative flex-1 bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm border border-gray-700/50 p-4 md:p-6 flex flex-col justify-between rounded-b-2xl">
         <div>
           <div className="flex justify-between items-start mb-2">
             <h3 className="text-lg md:text-xl font-bold text-white group-hover:text-cyan-300 transition-colors">
@@ -157,7 +160,7 @@ function ProjectCard({ project, index }: ProjectCardProps) {
               {project.category}
             </span>
           </div>
-          <p className="text-xs md:text-sm text-gray-400 line-clamp-1">{project.description}</p>
+          <p className="text-xs md:text-sm text-gray-400">{project.description}</p>
         </div>
 
         <div className="flex items-center justify-between mt-3">
@@ -173,19 +176,34 @@ function ProjectCard({ project, index }: ProjectCardProps) {
             ))}
           </div>
 
-          {project.github && (
-            <motion.a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-xs font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition-all"
-            >
-              <FaGithub size={14} />
-              <span className="hidden sm:inline">View</span>
-            </motion.a>
-          )}
+          <div className="flex gap-2">
+            {project.website && (
+              <motion.a
+                href={project.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-xs font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition-all"
+              >
+                <FaExternalLinkAlt size={14} />
+                <span className="hidden sm:inline">Visit</span>
+              </motion.a>
+            )}
+            {project.github && (
+              <motion.a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-xs font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition-all"
+              >
+                <FaGithub size={14} />
+                <span className="hidden sm:inline">View</span>
+              </motion.a>
+            )}
+          </div>
         </div>
       </div>
     </motion.div>
